@@ -416,3 +416,13 @@ call s:SuperSub('_','\\rho','ᵨ')
 call s:SuperSub('_','\\phi','ᵩ')
 call s:SuperSub('_','\\gamma','ᵧ')
 call s:SuperSub('_','\\chi','ᵪ')
+
+if !exists('g:tex_conceal_beg')
+  let g:tex_conceal_beg = 0
+endif
+if g:tex_conceal_beg == 1
+  syn region texItalStyle matchgroup=texTypeStyle start="\\begin\s*{" end="}" concealends contains=@texItalGroup
+  syn region texItalStyle matchgroup=texTypeStyle start="\\end\s*{\a*" end="}" concealends contains=@texItalGroup
+  syn region texMathEquation matchgroup=texStatement start='\\begin\s*{\%(equation\|align\|bmatrix\|pmatrix\|cases\)\%(\|\*\)}' end='\\end\s*{\%(equation\|align\|bmatrix\|pmatrix\|cases\)\%(\|\*\)}' concealends keepend contains=@texMathZoneGroup
+  syn cluster texMathZoneGroup add=texMathEquation
+end

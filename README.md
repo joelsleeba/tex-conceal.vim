@@ -52,6 +52,14 @@ To conceal fraction (½⅓⅔¼⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞)
 let g:tex_conceal_frac=1
 ```
 
+### Begin ends
+
+To conceal `\begin{environment} ... \end{environment}`
+
+```vim
+let g:tex_conceal_beg=1
+```
+
 ## Recommended settings
 
 ```vim
