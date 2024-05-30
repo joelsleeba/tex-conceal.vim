@@ -370,6 +370,7 @@ call s:SuperSub('\^','\\iota','ᶥ')
 call s:SuperSub('\^','\\Phi','ᶲ')
 call s:SuperSub('\^','\\varphi','ᵠ')
 call s:SuperSub('\^','\\chi','ᵡ')
+call s:SuperSub('\^','\\prime',"′")
 
 syn match texMathSymbol '\^\%(\*\|\\ast\|\\star\|{\s*\\\%(ast\|star\)\s*}\)' contained conceal cchar=˟
 syn match texMathSymbol '\^{\s*-1\s*}' contained conceal contains=texSuperscripts
@@ -421,6 +422,8 @@ if !exists('g:tex_conceal_beg')
   let g:tex_conceal_beg = 0
 endif
 if g:tex_conceal_beg == 1
+  syn region texBoldStyle matchgroup=texTypeStyle start="\\\%(chapter\|section\)\s*{" end="}" concealends contains=@texItalGroup
+  syn region texItalStyle matchgroup=texTypeStyle start="\\\%(subsection\|subsubsection\)\s*{" end="}" concealends contains=@texItalGroup
   syn region texItalStyle matchgroup=texTypeStyle start="\\begin\s*{" end="}" concealends contains=@texItalGroup
   syn region texItalStyle matchgroup=texTypeStyle start="\\end\s*{\a*" end="}" concealends contains=@texItalGroup
   syn region texMathEquation matchgroup=texStatement start='\\begin\s*{\%(equation\|align\|bmatrix\|pmatrix\|cases\)\%(\|\*\)}' end='\\end\s*{\%(equation\|align\|bmatrix\|pmatrix\|cases\)\%(\|\*\)}' concealends keepend contains=@texMathZoneGroup
