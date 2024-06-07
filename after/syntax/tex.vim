@@ -272,6 +272,10 @@ syn region texBoldItalStyle matchgroup=texTypeStyle start="\\emph\s*{" end="}" c
 syn region texItalStyle  matchgroup=texTypeStyle start="\\emph\s*{" end="}" concealends contains=@texItalGroup
 syn region texMatcher matchgroup=texTypeStyle start="\\\%(underline\|uline\){" end="}" concealends contains=@texItalGroup
 
+syn region texItalStyle matchgroup=texTypeStyle start="\\\%(autocite\|cite\)\s*{" end="}" concealends contains=@texItalGroup
+syn region texItalStyle matchgroup=texTypeStyle start="\\\%(autoref\|ref\)\s*{" end="}" concealends contains=@texItalGroup
+syn region texItalStyle matchgroup=texTypeStyle start="\\label\s*{" end="}" concealends contains=@texItalGroup
+
 hi texBoldMathText cterm=bold gui=bold
 hi texUnderStyle cterm=underline gui=underline
 match texUnderStyle /\\\%(underline\|uline\){\zs\(.\([^\\]}\)\@<!\)\+\ze}/
